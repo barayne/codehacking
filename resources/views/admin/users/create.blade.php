@@ -4,6 +4,8 @@
 
     <h1>Create User</h1>
 
+    @include('includes.form_error')
+
     {!! Form::open(['method'=>'POST', 'action'=> 'AdminUsersController@store','files'=>true]) !!}
 
         <div class="form-group">
@@ -35,6 +37,10 @@
             {!! Form::submit('Create User',['class'=>'btn btn-primary']) !!}
         </div>
 
+
     {!! Form::close() !!}
+
+
+
 
 @stop
