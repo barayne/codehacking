@@ -7,6 +7,7 @@ use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
+use App\Http\Requests\UsersEditRequest;
 
 use App\Http\Requests;
 
@@ -48,6 +49,19 @@ class AdminUsersController extends Controller
 
 //        User::create($request->all());
 
+        if(trim($request->password) == ''){
+
+            $input = $request->except('password');
+        }
+        else{
+
+            $input = $request->all();
+
+            $input['password'] = bcrypt($request->password);
+        }
+
+
+
         $input = $request->all();
 
         if($file = $request->file('photo_id')){
@@ -62,7 +76,7 @@ class AdminUsersController extends Controller
 
         }
 
-        $input['password'] = bcrypt($request->password);
+
 
         User::create($input);
 
@@ -106,10 +120,21 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UsersRequest $request, $id)
+    public function update(UsersEditRequest $request, $id)
     {
         //
         $user = User::findOrFail($id);
+
+        if(trim($request->password) == ''){
+
+            $input = $request->except('password');
+        }
+        else{
+
+            $input = $request->all();
+
+            $input['password'] = bcrypt($request->password);
+        }
 
         $input = $request->all();
 
