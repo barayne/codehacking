@@ -71,7 +71,7 @@ class AdminUsersController extends Controller
 
             $file->move('images', $name);
 
-            $photo = Photo::create(['file'=>$name]);
+            $photo = Posts::create(['file'=>$name]);
 
             $input['photo_id'] = $photo->id;
 
@@ -82,10 +82,11 @@ class AdminUsersController extends Controller
         User::create($input);
 
         //return $request->all();
-        //return redirect('/admin/users');
-        $response["success"] = 1;
+        return redirect('/admin/users');
 
-        return json_encode($response);
+        //For API
+        //$response["success"] = 1;
+        //return json_encode($response);
     }
 
     /**
