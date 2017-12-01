@@ -30,7 +30,7 @@ Route::group(['middleware'=>'admin'], function(){
 
     Route::resource('admin/users', 'AdminUsersController');
 
-   // Route::get('admin/users/create', 'AdminUsersController@store');
+   //Route::get('admin/users/create', 'AdminUsersController@store');
 
     Route::resource('admin/posts', 'AdminPostsController');
 
