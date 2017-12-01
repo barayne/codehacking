@@ -144,5 +144,17 @@ class AdminPostsController extends Controller
     public function destroy($id)
     {
         //
+        $post = Post::findOrFail($id);
+
+        //Check if post contains id
+        if($post->photo_id != 0)
+        {
+            unlink(public_path() . $post->photo->file);
+        }
+
+
+        $post->delete();
+
+        return redirect('/admin/posts');
     }
 }
