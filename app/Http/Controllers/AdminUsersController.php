@@ -83,7 +83,6 @@ class AdminUsersController extends Controller
 
         //return $request->all();
         return redirect('/admin/users');
-
         //For API
         //$response["success"] = 1;
         //return json_encode($response);
